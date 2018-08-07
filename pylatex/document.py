@@ -231,6 +231,10 @@ class Document(Environment):
             try:
                 output = subprocess.check_output(command,
                                                  stderr=subprocess.STDOUT)
+                # second pass fix issue with Table of Contents (TOC) not compiling.
+                output = subprocess.check_output(command,
+                                                 stderr=subprocess.STDOUT)
+                
             except (OSError, IOError) as e:
                 # Use FileNotFoundError when python 2 is dropped
                 os_error = e
